@@ -21,7 +21,7 @@ jobs:
           name: dist
           path: dist/
 
-   deploy:
+  deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -33,5 +33,5 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: ap-southeast-3
       - run: aws s3 sync dist/ s3://fem-cicd-service-245002063084-ap-southeast-3-an/ --delete
